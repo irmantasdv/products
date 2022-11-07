@@ -1,9 +1,11 @@
 <?php include "classes/Product-class.php"; ?>
+<?php include "classes/ProductLine-class.php"; ?>
 <?php
 $products = $productObject->index();
 $cols = $productObject->cols();
 $productObject->createProduct();
 $productObject->deleteProduct();
+$lineCols = $productLineObject->cols();
 ?>
 
 
@@ -11,6 +13,9 @@ $productObject->deleteProduct();
     <div class="col-lg-8">
         <h1>Products</h1>
     </div>
+    <?php foreach ($lineCols as $col) { ?>
+                    <th><?php echo $col; ?></th>
+                <?php } ?>
 </div>
 </div>
 <div class="row">
@@ -21,6 +26,7 @@ $productObject->deleteProduct();
 <div class="row">
     <div class="col-lg-8">
         <table class="table table-striped">
+            
             <tr>
                 <?php foreach ($cols as $col) { ?>
                     <th><?php echo $col; ?></th>

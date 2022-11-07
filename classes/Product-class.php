@@ -1,6 +1,7 @@
 <?php
 include "utilities/DatabaseManager.php";
-class Product {
+class Product
+{
     private $cols = array(
         "productCode" => "ID",
         "productName" => "Product Name",
@@ -12,17 +13,18 @@ class Product {
         "buyPrice" => "Price",
         "MSRP" => "MSRP"
     );
-    public function index(){
-     
-        $databaseManager = new DatabaseManager();
-        
-        $products = $databaseManager->select("products");   
-        return $products;
+    public function index()
+    {
 
+        $databaseManager = new DatabaseManager();
+
+        $products = $databaseManager->select("products");
+        return $products;
     }
 
-    public function createProduct() {
-         if(isset($_POST['create'])) {
+    public function createProduct()
+    {
+        if (isset($_POST['create'])) {
             $data = $_POST;
             var_dump($data);
             unset($data["create"]);
@@ -35,23 +37,23 @@ class Product {
 
             header("Location: index.php?page=products");
             exit();
-         }
-        
+        }
     }
-    public function deleteProduct() {
-        if(isset($_POST["page"]) && $_POST["page"] == "products") {
-            if(isset($_POST["delete"])) {
+    public function deleteProduct()
+    {
+        if (isset($_POST["page"]) && $_POST["page"] == "products") {
+            if (isset($_POST["delete"])) {
                 $databaseManager = new DatabaseManager();
-                $databaseManager->delete('products', 'productCode', $_POST["delete"]);//mygtuko reiksme
+                $databaseManager->delete('products', 'productCode', $_POST["delete"]); //mygtuko reiksme
                 header("Location: index.php?page=products");
                 exit();
             }
         }
     }
-    
-    public function cols(){
+
+    public function cols()
+    {
         return $this->cols;
     }
-
 }
 $productObject = new Product();

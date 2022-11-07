@@ -14,6 +14,14 @@
         <input type="text" name="product_line" class="form-control" id="product_line" placeholder="Product Line">
     </div>
     <div class="form-group">
+        <label for="product_line">Product Line</label>
+        <select name="product_line" class="form-select">
+        <?php foreach ($lineCols as $col) { ?>
+            <option value="<?php echo $col ?>"><?php echo $col ?></option>
+                <?php } ?>
+        </select>
+    </div>
+    <div class="form-group">
         <label for="phone_number">Product Scale</label>
         <input type="text" name="product_scale" class="form-control" id="product_scale" placeholder="Product Scale">
     </div>
